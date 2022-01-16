@@ -1,0 +1,26 @@
+*{
+  font-family: 'Public Sans', sans-serif !important;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #282828;
+  color: #fbfbfb;
+}
+
+.binaries{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.001em;
+    justify-content: center;
+    max-height: 300px;
+    overflow: auto;
+   
+   
+  }
+
+.badge{
+  white-space: inherit;
+}
