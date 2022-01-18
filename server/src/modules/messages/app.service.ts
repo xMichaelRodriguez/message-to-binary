@@ -39,7 +39,7 @@ export class AppService {
 
   async getMessage(uid: string): Promise<MessageToBinaryDto> {
     try {
-      const message = await this.messageModel.findById(uid);
+      const message: MessageToBinaryDto = await this.messageModel.findById(uid);
       if (!message) {
         throw new NotFoundException('the message has already been discovered ');
       }
@@ -50,12 +50,28 @@ export class AppService {
     }
   }
 
-  async findByPass(pass: string): Promise<void> {
-    const resp = await this.messageModel.find({ pass: pass });
+  async findByPass(pass: string): Promise<any> {
+    let resp;
+    try {
+      resp = await this.messageModel.find({
+        pass: pass,
+      });
+    } catch (e) {
+      throw new BadRequestException('not found message');
+    }
+    console.log(resp);
 
     if (Object.entries(resp).length === 0) {
       throw new BadRequestException('Invalid pass to decypher message');
     }
+    const message = resp.pop();
+
+    if (!message.state) {
+      console.log('bad request');
+      throw new BadRequestException('the message has already been discovered');
+    }
+
+    return message;
   }
 
   async updateStateMessage(uid: string): Promise<void> {

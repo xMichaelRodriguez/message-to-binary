@@ -64,48 +64,39 @@ const BodyCardReverseMessage = () => {
 
 
 
-    const handleRevertConvertion = () => {
+    const handleRevertConvertion = async () => {
+        if (message.message.length === 0) return;
 
-        if (message.message.length === 0) return
         const data = message.message.map(item => item.split(' ').map(char => (
             Number(parseInt(char,2).toString(10))
         )))
-
         // return convertion of decimal to text
-
         const toASCII = data.map(char => (
             String.fromCharCode(...char)
         )).join(' ')
         setMessageDecipher(toASCII);
 
-        updateStateToFalse();
+        await updateStateToFalse();
 
 
     }
     const isValid = async () => {
-       
+        if (pass.trim() === '') return setErrorMessage('Need a pass');
+
+
+
+
         const objFech = new Fetching('GET',`/${pass}`,'');
         const data: Response = await objFech.fetchSync();
-        console.log(pass);
 
-       
-        if (data.status === 404 ||data.status === 404) {
-            setErrorMessage('Invalid Pass...');
-            return false;
+        const body = await data.json();
+        if (body.state) {
+            setErrorMessage('')
+            return handleRevertConvertion();
         } else {
-            if (!message.state) {
-                setErrorMessage('This message has already been discovered');
-                setTimeout(() => {
-                    history.push('/')
-                }, 1000);
-            } else {
-                
-                setErrorMessage('')
-                handleRevertConvertion()
-            }
-
-
+            setErrorMessage(body.message)
         }
+        return setErrorMessage(body?.message);
 
     }
 
@@ -116,7 +107,7 @@ const BodyCardReverseMessage = () => {
     }
 
 
-    const handlePassChange = (passInput:string) => {
+    const handlePassChange = (passInput: string) => {
         setPass(passInput);
     }
 

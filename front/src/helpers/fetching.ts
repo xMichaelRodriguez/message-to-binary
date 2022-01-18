@@ -1,5 +1,6 @@
 
-const baseUrl=  'https://message-to-binary.herokuapp.com'
+// const baseUrl=  'https://message-to-binary.herokuapp.com'
+const baseUrl=  'http://localhost:4000'
 
 export class Fetching {
     method: string;

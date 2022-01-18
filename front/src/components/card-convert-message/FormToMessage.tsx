@@ -11,7 +11,8 @@ const FormToMessage = (props: IProp) => {
     }
     const handlebSumit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        props.handleConvert(state)
+        if(state.trim()==='')return;
+        props.handleConvert(state.trim())
 
     }
 
