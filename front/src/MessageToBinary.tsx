@@ -28,7 +28,7 @@ const MessageToBinary = () => {
         const fetchCalls = new Fetching('POST','/',textToBinary)
         const result = await fetchCalls.fetchSync();
         const dataparsed: IStateBinary = await result.json();
-        setCharParsed({ ...dataparsed,url: `http://localhost:3000/${dataparsed._id}` });
+        setCharParsed({ ...dataparsed,url: `https://message-to-binary.netlify.app/${dataparsed._id}` });
     }
 
     
@@ -56,13 +56,13 @@ const MessageToBinary = () => {
                                 charParsed.pass && <ul className='list-group list-group-flush'>
                                     
                                     <li className='list-group-item bg-dark text-light '>
-                                        <span>Enlace para enviar a tu amig@</span>
+                                        <span>Link to send to your friend</span>
                                         <a  href={`${charParsed.url}`} style={{}} target='_blank' className='link-info text-break d-block'>{charParsed?.url} </a>
                                     </li>
                                         
                                    
                                     <li className='list-group-item bg-dark text-light'> 
-                                        <span>Contraseña para desifrar el mensaje</span>
+                                        <span>Password to decrypt the message</span>
                                         <p className='badge redViolet  m-2'>{charParsed.pass} </p>
                                     </li>
                                 </ul>
