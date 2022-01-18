@@ -5,7 +5,7 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'https://message-to-binary.netlify.app'],
   });
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
@@ -13,7 +13,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const PORT = configService.get('PORT') || 4000;
   await app.listen(PORT, () => {
-    console.log(`listen on http://localhost:${PORT}`);
+    console.log(`listen on PORT: ${PORT}`);
   });
 }
 bootstrap();
