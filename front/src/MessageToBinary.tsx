@@ -48,7 +48,7 @@ const MessageToBinary = () => {
                             </div>
                         </div>
                         <div className='col-md-12 mt-3 '>
-                            <span>Vista Previa del mensaje:</span>
+                            <span>Preview of message:</span>
                             <ListMessageToBinaryAndReverse charParsed={charParsed.message} />
                         </div>
                         <div className='col-md-12 mt-3'>
