@@ -1,0 +1,52 @@
+*{
+  font-family: 'Public Sans', sans-serif !important;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #282828;
+  color: #fbfbfb;
+}
+
+.binaries{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px;
+    justify-content: center;
+    max-height: 150px;
+    overflow: auto;
+   
+   
+  }
+
+.badge{
+  white-space: inherit;
+}
+
+.salmon{
+  background-color: #F88568;
+}
+.java{
+  background-color: #28A59D;
+}
+
+.doveGray{
+  background-color: #767676;
+}
+
+.lightSeaGreen{
+  background-color: #2CB4AC;
+}
+
+.redViolet{
+  background-color: #C14D9F;
+}
+.chelseaCucumber{
+  background-color: #8AAE53;
+}
+
+.lochmara{
+  background-color: #117DC5;
+}
